@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
         if (startButton != null)
         {
             startButton.onClick.AddListener(StartGame);
-        }
+        }   
         else
         {
             Debug.LogError("Start Button not assigned in the inspector.");
