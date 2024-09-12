@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Trail
+    uniqueID: 3730693025
+    locked: 0
+  - name: karakter
+    uniqueID: 1484068333
+    locked: 0
+  - name: "g\xF6z"
+    uniqueID: 723944329
+    locked: 0
