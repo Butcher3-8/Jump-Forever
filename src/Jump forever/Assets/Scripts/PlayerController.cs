@@ -7,24 +7,30 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
 
-    public GameObject gameOverPanel;
+    public GameObject gameOverPanel; // Game Over Paneli
     public LayerMask groundLayer;
     public AudioClip jumpSound; // Zıplama sesi için AudioClip
-    public float fallThreshold = -10f;
+
 
     private Rigidbody2D rb;
     private bool isGrounded;
     private AudioSource audioSource; // AudioSource referansı
+    private float previousYPosition;
+    private float fallCheckTimer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>(); // AudioSource bileşenini al
-         
-         if (gameOverPanel != null)
+
+        if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(false);
         }
+
+        // Başlangıçta mevcut y pozisyonunu kaydet
+        previousYPosition = transform.position.y;
+      
     }
 
     void Update()
@@ -42,17 +48,12 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             PlayJumpSound(); // Zıplama sesi çal
         }
-    }
 
-     void GameOver()
-    {
-        // Oyun bitir
-        Time.timeScale = 0f; // Zamanı durdur
-        if (gameOverPanel != null)
-        {
-            gameOverPanel.SetActive(true); // Game Over panelini göster
-        }
-    }
+      
+
+
+
+ 
 
     void PlayJumpSound()
     {
@@ -61,4 +62,6 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot(jumpSound); // Zıplama sesini oynat
         }
     }
+}
+
 }
