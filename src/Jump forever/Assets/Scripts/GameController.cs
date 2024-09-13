@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public Button pauseButton; // Pause Button
     public Button resumeButton; // Resume Button
     public Button restartButton; // Restart Button
+    public Button mainMenuButton; // Ana Menü Butonu
 
     private bool isPaused = false;
 
@@ -15,11 +16,12 @@ public class GameController : MonoBehaviour
     {
         // Başlangıçta paneli kapalı yap
         gamePausePanel.SetActive(false);
-        
+
         // Butonlara işlev ekle
         pauseButton.onClick.AddListener(PauseGame);
         resumeButton.onClick.AddListener(ResumeGame);
         restartButton.onClick.AddListener(RestartGame);
+        mainMenuButton.onClick.AddListener(GoToMainMenu); // Ana menü butonuna işlev ekle
     }
 
     void Update()
@@ -61,5 +63,12 @@ public class GameController : MonoBehaviour
         // Oyunu yeniden başlat
         Time.timeScale = 1f; // Oyunun hızını geri getir
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Mevcut sahneyi yeniden yükle
+    }
+
+    public void GoToMainMenu()
+    {
+        // Ana menüye git
+        Time.timeScale = 1f; // Oyun zamanını geri getir
+        SceneManager.LoadScene("MainMenu"); // MainMenu sahnesini yükle
     }
 }

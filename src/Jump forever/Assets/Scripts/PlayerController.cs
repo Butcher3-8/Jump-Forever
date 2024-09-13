@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
+
+    public GameObject gameOverPanel;
     public LayerMask groundLayer;
     public AudioClip jumpSound; // Zıplama sesi için AudioClip
+    public float fallThreshold = -10f;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -17,6 +20,11 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>(); // AudioSource bileşenini al
+         
+         if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
     }
 
     void Update()
@@ -36,16 +44,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+     void GameOver()
+    {
+        // Oyun bitir
+        Time.timeScale = 0f; // Zamanı durdur
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true); // Game Over panelini göster
+        }
+    }
+
     void PlayJumpSound()
     {
         if (audioSource != null && jumpSound != null)
         {
-            if (audioSource.isPlaying)
-            {
-                audioSource.Stop(); // Mevcut ses çalınıyorsa durdur
-            }
-            audioSource.clip = jumpSound; // Zıplama sesini ayarla
-            audioSource.Play(); // Sesi çal
+            audioSource.PlayOneShot(jumpSound); // Zıplama sesini oynat
         }
     }
 }
