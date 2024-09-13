@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
         // Oyunu duraklat
         Time.timeScale = 0f;
         gamePausePanel.SetActive(true);
+        pauseButton.gameObject.SetActive(false); // Duraklatma menüsünü gösterirken butonu gizle
         isPaused = true;
     }
 
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
         // Oyunu devam ettir
         Time.timeScale = 1f;
         gamePausePanel.SetActive(false);
+        pauseButton.gameObject.SetActive(true); // Duraklatma menüsü kapatıldığında butonu tekrar göster
         isPaused = false;
     }
 
