@@ -192,3 +192,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyDelay: 2
+  flashColor: {r: 0.2392157, g: 0.18039216, b: 0.427451, a: 1}
+  flashDuration: 2
