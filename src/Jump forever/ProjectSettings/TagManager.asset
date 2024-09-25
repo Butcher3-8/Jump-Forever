@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Coin
+  - Grnd
+  - Start
+  - Death
   layers:
   - Default
   - TransparentFX
