@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
         gamePausePanel.SetActive(false);
 
         // Butonlara işlev ekle
-        pauseButton.onClick.AddListener(PauseGame);
+  
         resumeButton.onClick.AddListener(ResumeGame);
         restartButton.onClick.AddListener(RestartGame);
         mainMenuButton.onClick.AddListener(GoToMainMenu); // Ana menü butonuna işlev ekle
